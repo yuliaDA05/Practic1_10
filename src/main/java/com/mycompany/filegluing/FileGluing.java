@@ -30,11 +30,16 @@ public class FileGluing {
                 System.out.println("Введите путь к файлу " + i + ":");
                 String filePath = reader.readLine();
 
+                try {
                 String fileContent = readStringFromFile(filePath);
                 gluedContent.append(fileContent);
 
                 if (i == 1) {
                     directoryPath = Paths.get(filePath).getParent().toString();
+                }
+            } catch (FileNotFoundException e) {
+                    System.out.println("Файл не найден");
+                    return;
                 }
             }
 
